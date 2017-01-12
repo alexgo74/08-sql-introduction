@@ -47,6 +47,9 @@ Article.fetchAll = function(callback) {
           // When that's complete call the insertRecord method for each article you've created.
         // THEN() invoke fetchAll and pass your callback as an argument
         // Don't forget to CATCH() any errors
+        // .catch(function(err)) {
+        // console.error(err);
+      // })
       }
     }
   )

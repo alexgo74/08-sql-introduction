@@ -1,5 +1,6 @@
 'use strict';
-// TODO: Install and require the node postgres package into your server.js, and ensure that it's now a new dependency in your package.json
+// TODO: Done: Install and require the node postgres package into your server.js, and ensure that it's now a new dependency in your package.json
+const pg = require('pg');
 
 const express = require('express');
 // REVIEW: Require in body-parser for post requests in our server
@@ -41,7 +42,7 @@ app.get('/articles/all', function(request, response) {
 });
 
 app.post('/articles/insert', function(request, response) {
-  console.log(request.body.article);
+  console.log(request.body);
   let client = new pg.Client(conString)
 
   client.connect(function(err) {
@@ -49,7 +50,7 @@ app.post('/articles/insert', function(request, response) {
 
     client.query(
       ``, // TODO: Write the SQL query to insert a new record
-      [], // TODO: Get each value from the request's body
+      [request.body], // TODO: Get each value from the request's body
       function(err) {
         if (err) console.error(err);
         client.end();
